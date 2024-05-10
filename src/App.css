@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+/* stylelint-disable selector-max-id */
+/* stylelint-disable no-duplicate-selectors */
+@import './styles/asse.css';
+@import 'react-grid-layout/css/styles.css';
+@import 'react-resizable/css/styles.css';
+
+html,
+body,
+#root,
+.resume-editor {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  --color-blue: #4c98f7;
+  --color-green: #009688;
+  --color-white: #fff;
+  --color-yellow: #ffb800;
+  --color-orange: #ff5722;
+  --color-grey: #606266;
+
+  color: var(--color-text-1);
+  margin: 0;
+  overscroll-behavior: none;
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.editor-body {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: calc(100% - 50px);
+  overflow: auto;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.editor-body > .control-panel,
+.editor-body > .editor-panel {
+  flex-shrink: 0;
+  width: 260px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.resume-editor-preview > .main-panel,
+.editor-body > .main-panel {
+  background-color: #eee;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+@media print {
+  .arco-trigger,
+  .header-container {
+    display: none !important;
   }
-  to {
-    transform: rotate(360deg);
+
+  html,
+  body,
+  #root,
+  .resume-editor {
+    height: auto;
+  }
+
+  .editor-body {
+    display: inline-block;
+    min-height: auto;
+    width: auto;
+  }
+
+  .editor-body > .control-panel,
+  .editor-body > .editor-panel {
+    display: none !important;
+  }
+
+  .editor-body > .main-panel {
+    background-color: #fff !important;
+    overflow: visible;
+  }
+
+  .pedestal-main-container {
+    margin: 0 auto !important;
+  }
+
+  .hover-menu-container,
+  .pedestal-main-item-toolbar {
+    display: none !important;
+  }
+
+  *:hover,
+  .pedestal-item-focus {
+    border: unset !important;
+    box-shadow: unset !important;
+    outline: unset !important;
   }
 }
